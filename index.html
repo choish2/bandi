@@ -26,12 +26,20 @@
         .btn_wrap{width: 80%;margin: 0 auto;margin-top: 2.5vh;height: auto;;display: flex;display: flex;flex-direction: column;border-top: 1px solid #fff;border-bottom: 1px solid #fff;}
         .btn_wrap li{width: 100%;display: flex;height: auto;}
         .btn_wrap li:nth-child(3){margin-bottom: 2.5vh;}
-        .btn_wrap li a{display: flex;width: 48%;margin-right: 2%;height: 90%;margin-top: 5%;;align-items: center;justify-content: center;background: #000;color: #fff;border-radius: 15px;height: 35px;
-        font-size: 13px;}
+        .btn_wrap li a{display: flex;width: 48%;margin-right: 2%;height: 90%;margin-top: 5%;;align-items: center;justify-content: center;background: #fff;color: #000;border-radius: 10px;height: 35px;font-size: 13px;font-weight: bold;}
      
         .map{margin-top: 25px;display: flex;align-items: center;justify-content: center;}
-        .root_daum_roughmap .cont .section{border-bottom: 1px solid #fff !important; }
-   </style>
+        .root_daum_roughmap .cont .section{border-bottom: 1px solid #fff !important;; }
+        .text_box1{width: 80%;margin: 0 auto;display: flex;flex-direction: column;padding: 1.5vh 0 1.5vh 0;border-bottom: 1px solid #fff;}
+        .text_box1 li{display: flex;justify-content: start; height: 35px;}
+        .text_box1 li h2::before{content: "";position: absolute;;width: 1px;height: 10px;right: 7px;top: 14px;background: #000;;}
+        .text_box1 li h2{font-size: 16px;width: 20%;display: flex;align-items: center;justify-content: center;position: relative;}
+        .text_box1 li p{font-size: 14px;height: 100%;display: flex;align-items: center;justify-content: center;}
+        .map_info{width: 100%;display: flex;align-items: center;justify-content: center;border-bottom: 0px solid #000;padding-bottom: 5vh;}
+        .wrap_map{display: none;}
+        .wrap_controllers{display: none;}
+      
+  </style>
 </head>
 <body>
     <div class="wrap">
@@ -71,8 +79,12 @@
                 <script>
                     
                     var mapOptions = {
-                        center: new naver.maps.LatLng(37.3595704, 127.105399),
-                        zoom: 10
+                        center: new naver.maps.LatLng(37.3889964,  127.1225147),
+                        zoom: 15
+
+
+
+
                     };
                     
                     var map = new naver.maps.Map('map', mapOptions);
@@ -85,15 +97,59 @@
                         
                     })   
                     var infowindow = new naver.maps.InfoWindow({
-                        content: '<div style="width:150px;text-align:center;padding:10px;">반디렌터카</div>'
+                        content: '<div style="width:150px;text-align:center;padding:10px;font-weight: bolder;border: 1px solid #cdcdcd;background: #fff;">' +
+                        '<a href="https://map.naver.com/p/search/%EB%B0%98%EB%94%94%EB%A0%8C%ED%84%B0%EC%B9%B4/place/1965360608?placePath=?entry=pll&from=nx&fromNxList=true&searchType=place&c=15.00,0,0,0,dh" target="_blank" style="text-decoration: none; color: inherit;display:flex;align-items: center;justify-content: center;"><img src="img/logo.png" alt="" style="width:20px;">반디렌터카</a>' +
+                        '</div>'
                     });
 
                     naver.maps.Event.addListener(marker, 'click', function() {
                         infowindow.open(map, marker);
                     });   
+
+                 
+
                 </script>
+               
+        </div>
+        <!-- <ul class="text_box1">
+            <li>
+                <h2>주소</h2>
+                <p>경기 성남시 분당구 서현로 170 B104호</p>
+            </li>
+            <li>
+                <h2>전화</h2>
+                <p>
+                    <a href=tel:010-1234-4567>0507-1368-7918</a>
+                </p>
+            </li>
+        </ul> -->
+        <ul class="map_info">
+                            <!--
+                    * 카카오맵 - 약도서비스
+                    * 한 페이지 내에 약도를 2개 이상 넣을 경우에는
+                    * 약도의 수 만큼 소스를 새로 생성, 삽입해야 합니다.
+                -->
+                <!-- 1. 약도 노드 -->
+                <div id="daumRoughmapContainer1728879687433" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+                <!-- 2. 설치 스크립트 -->
+                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+                <!-- 3. 실행 스크립트 -->
+                <script charset="UTF-8">
+                    new daum.roughmap.Lander({
+                        "timestamp" : "1728879687433",
+                        "key" : "2kvrw",
+                        "mapWidth" : "300",
+                        "mapHeight" : "360"
+                        
+                    }).render();
+                </script>
+        </ul>
+
     </div>
     <script src="script/jquery-3.7.1.min.js"></script>
+    <script src=""></script>
     
 </body>
 

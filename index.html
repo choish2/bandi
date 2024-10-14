@@ -69,14 +69,29 @@
                 <div id="map" style="width:80%;height:250px;"></div>
              
                 <script>
-                var mapOptions = {
-                    center: new naver.maps.LatLng(37.3595704, 127.105399),
-                    zoom: 10
-                };
+                    
+                    var mapOptions = {
+                        center: new naver.maps.LatLng(37.3595704, 127.105399),
+                        zoom: 10
+                    };
+                    
+                    var map = new naver.maps.Map('map', mapOptions);
                 
-                var map = new naver.maps.Map('map', mapOptions);
+               
+                    var marker = new naver.maps.Marker({
+                        position: new naver.maps.LatLng(37.3889964, 127.1225147),
+                        map: map , 
+                        title:'반디렌터카'
+                        
+                    })   
+                    var infowindow = new naver.maps.InfoWindow({
+                        content: '<div style="width:150px;text-align:center;padding:10px;">반디렌터카</div>'
+                    });
+
+                    naver.maps.Event.addListener(marker, 'click', function() {
+                        infowindow.open(map, marker);
+                    });   
                 </script>
-            
     </div>
     <script src="script/jquery-3.7.1.min.js"></script>
     

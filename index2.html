@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반디렌터카</title>
+    <meta name="description" content="모든지역에서 렌트하고 반납하세요!">
+    <meta name="keywords" content="렌터카, 반디렌터카, 자동차, 여행, 장기렌트, 단기렌트, 월렌트">
+    <meta name="author" content="반디렌터카">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=phone_callback" />
+
+    <style>
+        body, html, h2, p, figure { padding: 0; margin: 0; }
+        input, li, ul, a { list-style: none; margin: 0; padding: 0; text-decoration: none; color: #000; }
+        body { max-width: 420px; margin: 0 auto; height: 100vh; }
+        .wrap { background-image: linear-gradient(to bottom, #3bb8e99c 10%, rgba(17, 86, 189, 0.725)); height: 100%; }
+        .pic { display: flex; align-items: center; justify-content: center; padding-top: 5vh; flex-direction: column; }
+        .pic .imgs { width: 300px; height: auto; overflow: hidden; margin-bottom: 2.5vh;}
+        .pic .imgs figure { width: 80%; height: auto; margin: 0 auto; }
+        .pic .imgs figure img { background-size: cover; width: 100%; height: 100%; }
+        .pic h2 { text-align: center; margin: 1vh 0 0 0; font-size: 30px;}
+        .pic p { font-size: 14px; padding: 0; text-align: center; color: #373737;}
+        .btn_wrap { display: flex; flex-wrap: wrap; justify-content: center; padding: 2.5vh 0;width: 80%;margin: 0 auto; }
+        .btn_wrap button { margin: 5px; padding: 10px 15px; background: #ffffff94; border-radius: 5px; cursor: pointer; }
+        .map_box { width: 80%; }
+        .map { margin-top: 25px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        .text_box1 { width: 80%; margin: 0 auto; display: flex; flex-direction: column; padding: 1.5vh 0; }
+        .text_box1 li { display: flex; justify-content: space-between; height: 35px; align-items: center; }
+        .text_box1 li h2 { font-size: 16px; width: 20%; display: flex; align-items: center; justify-content: center; position: relative; }
+        .text_box1 li p { font-size: 14px; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .exam { width: 80%; margin: 0 auto; padding-top: 1.5vh; }
+        .exam h2 {font-weight: normal; font-size: 20px;color: #fff;}
+        .exam h2 a{font-weight: normal; font-size: 20px;color: #fff;}
+        .exam p {font-size: 13px;margin-top: .5vh;margin: 1vh 0;display: flex;align-items: center;}
+        .locationn {display: flex; align-items: center; height: auto; word-break: keep-all;}
+        .icon {width: 16px; margin-right: .3vw;}
+        .icon img {background-size: cover; width: 100%;}
+        .blank{cursor:default ;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="pic">
+            <li class="imgs">
+                <figure>
+                    <a href="index.html">
+                        <img src="img/로고.png" alt="">
+                    </a>
+                </figure>
+            </li>
+            <li>
+                <h2>가까운 지점 찾아보기</h2>
+                <p>원하는 장소에서 픽업, 반납하자!</p>
+            </li>
+        </ul>
+        <div class="btn_wrap">
+            <button onclick="setLocation(37.546981, 127.0711503, '화양점')">화양점</button>
+            <button onclick="setLocation(37.5509369, 126.9119694, '마포점')">마포점</button>
+            <button onclick="setLocation(37.3889964, 127.1225147, '서현점')">서현점</button>
+            <button onclick="setLocation(37.3504132, 127.1082826, '미금점')">미금점</button>
+            <button onclick="setLocation(37.3926132, 126.9541618, '안양점')">안양점</button>
+            <button onclick="setLocation(37.2555521, 127.0743041, '수원점')">수원점</button>
+            <button onclick="setLocation(37.5073553, 126.7539173, '부천점')">부천점</button>
+            <button onclick="setLocation(37.6761683, 126.7461248, '일산점')">일산점</button>
+            <button onclick="setLocation(37.5669532, 127.1905133, '하남점')">하남점</button>
+            <button onclick="setLocation(37.4447488, 126.7026528, '인천점')">인천점</button>
+            <button onclick="setLocation(37.8653754, 127.7256916, '춘천점')">춘천점</button>
+            <button onclick="setLocation(37.3689832, 127.9399761, '원주점')">원주점</button>
+        </div>
+        <div class="map">
+            <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=m7m6wdplqg&submodules=panorama,geocoder"></script>
+            <div id="map" style="width:80%;height:200px;"></div>
+            <script>
+                const locations = {
+                    '화양점': '서울 광진구 능동로19길 47 화양타워 6층 715호',
+                    '마포점': '서울 마포구 월드컵로3길 14 마포한강2차푸르지오 202동 3005호',
+                    '서현점': '경기 성남시 분당구 서현로 170 분당풍림아이원플러스오피스텔 B104호',
+                    '미금점': '경기 성남시 분당구 성남대로 165',
+                    '안양점': '경기 안양시 동안구 평촌대로 239 912호',
+                    '수원점': '경기 수원시 영통구 봉영로 1617 훼밀리타워 1603호',
+                    '부천점': '경기 부천시 원미구 송내대로265번길 85 6층 반디렌터카 부천지점',
+                    '일산점': '경기 고양시 일산서구 중앙로 1581 하이투모로오피스텔 310호',
+                    '하남점': '경기 하남시 아리수로 570',
+                    '인천점': '인천 남동구 인하로 497-28 610호',
+                    '춘천점': '강원 춘천시 퇴계로 35',
+                    '원주점': '강원 원주시 상지대길 9 1222호'
+                };
+     
+                const number = {
+                    '화양점': '0507-1387-4972',
+                    '마포점': '0507-1322-7038',
+                    '서현점': '0507-1368-7918',
+                    '미금점': '0507-1318-3378',
+                    '안양점': '0507-1353-4972',
+                    '수원점': '0507-1476-4972',
+                    '부천점': '0507-1334-4973',
+                    '일산점': '0507-1323-4973',
+                    '하남점': '0507-1481-4972',
+                    '인천점': '0507-1385-4972',
+                    '춘천점': '0507-1465-1334',
+                    '원주점': '0507-1364-4973'
+                };
+
+
+                var mapOptions = {
+                    center: new naver.maps.LatLng(37.3889964, 127.1225147),
+                    zoom: 16
+                };
+                var map = new naver.maps.Map('map', mapOptions);
+                var marker;
+
+                function setLocation(lat, lng, name) {
+                    var coords = new naver.maps.LatLng(lat, lng);
+                    map.setCenter(coords);
+                    
+                    // 기존 마커 제거
+                    if (marker) {
+                        marker.setMap(null);
+                    }
+                    
+                    // 새로운 마커 생성
+                    marker = new naver.maps.Marker({
+                        position: coords,
+                        map: map
+                    });
+
+                    // 결과 업데이트
+                    updateExam(name); // exam 내용 업데이트
+                }
+
+                function updateExam(name) {
+                    var examElement = document.querySelector('.exam h2 a'); // a 요소 선택
+                    examElement.textContent = '반디렌터카 ' + name; // h2 내용 변경
+                    examElement.href = `https://map.naver.com/p/search/반디렌터카%20${encodeURIComponent(name)}/place?c=15.00,0,0,0,dh&isCorrectAnswer=true`; // 링크 업데이트
+
+                    var examElement = document.querySelector('.exam .tel'); // a 요소 선택
+                    examElement.textContent =  number[name]; // h2 내용 변경
+                   
+                    var addressElement = document.querySelector('.exam .locationn a'); // 첫 번째 p 요소 선택
+                    addressElement.textContent = locations[name]; // 주소 업데이트
+                }
+            </script>
+        </div>
+        <div class="exam">
+            <h2>
+                <a href="https://map.naver.com/p/search/%EB%B0%98%EB%94%94%EB%A0%8C%ED%84%B0%EC%B9%B4%EC%84%9C%ED%98%84/place/1965360608?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">반디렌터카 서현점</a> 
+            </h2>
+            <p class="locationn">
+                <img src="img/loccc.png" class="icon" alt="">
+                <a class="blank" href="#"> 
+                    경기 성남시 분당구 서현로 170 분당풍림아이원플러스오피스텔 B104호 
+                </a>
+                    
+            </p>
+            <p>
+                <img src="img/call.png" class="icon" alt="">
+                <a class="tel" href="tel:0507-1368-7918">
+                    0507-1387-4972
+                </a>
+            </p>
+            <p>
+                <img src="img/clock.png" class="icon" alt="">
+                09:00~20:00
+            </p>
+            <p>
+                <img src="img/cost.png" class="icon" alt="">
+                <a href="https://smartstore.naver.com/bandirentacar">
+                    더욱 자세한 사항 알아보기
+                </a>            
+            </p>
+        </div>
+        
+        <ul class="text_box1" id="result">
+            <!-- 검색 결과가 여기에 표시됩니다. -->
+        </ul>
+        <script src="script/jquery-3.7.1.min.js"></script>
+    </div>
+    <script src="script/jquery-3.7.1.min.js"></script>
+</body>
+</html>

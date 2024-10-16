@@ -13,22 +13,24 @@
    
    <style>
 
-        body,html,h2,p,figure{padding: 0;margin: 0;}
+      
+        body,html,h2,p,figure{padding: 0;margin: 0;;}
         li , ul, a{list-style: none;margin: 0; padding: 0;text-decoration: none;color: #000;}
-        body{max-width: 360px;margin: 0 auto;  }
-        .wrap{background-image:linear-gradient(to bottom, #3bb8e99c 10%, rgba(17, 86, 189, 0.725))}
+        body{max-width: 420px;margin: 0 auto;height: 100vh  }
+        .wrap{background-image:linear-gradient(to bottom, #3bb8e99c 10%, rgba(17, 86, 189, 0.725));height: 100%;}
         .pic{display: flex;align-items: center;justify-content: center;padding-top: 5vh;flex-direction: column;}
         .pic .imgs{width: 100px;height:100px;border-radius: 500px;overflow: hidden;}
         .pic .imgs figure{width: 100% ;height: 100%;}
         .pic .imgs figure img{background-size: cover;width: 100%;height: 100%;}
-        .pic h2{text-align: center;margin: 0.5vh;}
+        .pic h2{text-align: center;margin: 1vh 0 1vh 0 ;}
         .pic p{font-size: 14px;padding: 0;text-align: center;}
-        .btn_wrap{width: 80%;margin: 0 auto;margin-top: 2.5vh;height: auto;;display: flex;display: flex;flex-direction: column;border-top: 1px solid #fff;border-bottom: 1px solid #fff;}
-        .btn_wrap li{width: 100%;display: flex;height: auto;}
+        .btn_wrap{width: 80%;margin: 0 auto;margin-top: 2.5vh;height: auto;;display: flex;display: flex;flex-direction: column;border-bottom: 1px solid #fff;padding-bottom: 2.5vh;;}
+        .btn_wrap li{width: 100%;display: flex;height: auto;height: auto;justify-content: space-between;}
         .btn_wrap li:nth-child(3){margin-bottom: 2.5vh;}
-        .btn_wrap li a{display: flex;width: 48%;margin-right: 2%;height: 90%;margin-top: 5%;;align-items: center;justify-content: center;background: #fff;color: #000;border-radius: 10px;height: 35px;font-size: 13px;font-weight: bold;}
+        .btn_wrap li a{display: flex;width:48%;margin-right: 2%;height: 90%;margin-top: 5%;;align-items: center;justify-content: center;background: #ffffff94;color: #000;border-radius: 10px;;font-size: 13px;font-weight: bold;height:35px;}
      
-        .map{margin-top: 25px;display: flex;align-items: center;justify-content: center;}
+        .map{margin-top: 25px;display: flex;align-items: center;justify-content: center; flex-direction: column;padding-bottom: 2.5vh;}
+        .map h2{display: flex;height: 50px}
         .root_daum_roughmap .cont .section{border-bottom: 1px solid #fff !important;; }
         .text_box1{width: 80%;margin: 0 auto;display: flex;flex-direction: column;padding: 1.5vh 0 1.5vh 0;border-bottom: 1px solid #fff;}
         .text_box1 li{display: flex;justify-content: start; height: 35px;}
@@ -38,6 +40,7 @@
         .map_info{width: 100%;display: flex;align-items: center;justify-content: center;border-bottom: 0px solid #000;padding-bottom: 5vh;}
         .wrap_map{display: none;}
         .wrap_controllers{display: none;}
+        .clip{display: flex;align-items: center;justify-content: center;padding-top: 2.5vh;padding-bottom: 2.5vh;}
       
   </style>
 </head>
@@ -48,31 +51,32 @@
             <figure><img src="img/logo.png" alt=""></figure>
             </li>
            <li>
-            <h2>반디군</h2>
-            <p>안녕하세요 , 반디렌터카입니다.</p>
+            <h2>반디군
+            </h2>
+            <p>원하는 장소에서 픽업,반납하자!</p>
             <p>
                 <i class="fa-solid fa-phone"></i>
-                010-1234-5678
+           
             </p>
            </li>
         </ul>
         <ul class="btn_wrap">
             <li>
-                <a href="https://smartstore.naver.com/bandirentacar" target="_blank">반디스토어 바로가기</a>
-                <a href=Tel:01064833487>전화연결</a>
+                <a href="index2.html" target="_blank">지점안내</a>
+                <a href=Tel:01064833487>예약하기</a>
+                <a href="https://smartstore.naver.com/bandirentacar">스토어</a>
+                <a href="https://blog.naver.com/bandi_mobility">반디블로그</a>
             </li>
-            <li>
-                <a href="#">3</a>
-                <a href="#">4</a>
-            </li>
-            <li>
-                <a href="#">5</a>
-                <a href="#">6</a>
+        
                 
             </li>
         </ul>
+        <div class="clip">
+            <iframe width="80%" height="200" src="https://www.youtube.com/embed/qRo4NfGhGcY?si=nfm_ISe-J7JtURiI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+       <!--
         <div class="map">
-           
+           <h2>위치</h2>
             <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=m7m6wdplqg"></script>
                 <div id="map" style="width:80%;height:250px;"></div>
              
@@ -111,7 +115,7 @@
                 </script>
                
         </div>
-        <!-- <ul class="text_box1">
+        <ul class="text_box1">
             <li>
                 <h2>주소</h2>
                 <p>경기 성남시 분당구 서현로 170 B104호</p>
@@ -123,30 +127,7 @@
                 </p>
             </li>
         </ul> -->
-        <ul class="map_info">
-                            <!--
-                    * 카카오맵 - 약도서비스
-                    * 한 페이지 내에 약도를 2개 이상 넣을 경우에는
-                    * 약도의 수 만큼 소스를 새로 생성, 삽입해야 합니다.
-                -->
-                <!-- 1. 약도 노드 -->
-                <div id="daumRoughmapContainer1728879687433" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-
-                <!-- 2. 설치 스크립트 -->
-                <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-
-                <!-- 3. 실행 스크립트 -->
-                <script charset="UTF-8">
-                    new daum.roughmap.Lander({
-                        "timestamp" : "1728879687433",
-                        "key" : "2kvrw",
-                        "mapWidth" : "300",
-                        "mapHeight" : "360"
-                        
-                    }).render();
-                </script>
-        </ul>
-
+      
     </div>
     <script src="script/jquery-3.7.1.min.js"></script>
     <script src=""></script>
